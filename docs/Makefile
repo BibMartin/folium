@@ -42,6 +42,8 @@ clean:
 	-rm -rf $(BUILDDIR)/*
 
 html:
+	cd ../examples;	ls *.ipynb | sed 's/.ipynb//' | xargs -i jupyter nbconvert {}.ipynb --output=../docs/examples/{}.md --execute --to markdown; cd ../docs
+	-rm -rf $(BUILDDIR)/*
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
